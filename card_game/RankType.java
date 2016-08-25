@@ -16,7 +16,7 @@ public enum RankType {
   QUEEN(10),
   KING(10);
 
-  private int value;
+  int value;
 
   RankType(int value) {
       this.value = value;
