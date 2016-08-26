@@ -1,7 +1,7 @@
 package card_game;
 import java.util.*;
 
-public class Deck{
+public class Deck {
 
   private ArrayList<Card> deck;
 
@@ -25,6 +25,8 @@ public class Deck{
     Card card = deck.remove(0);
     return card;
   }
+
+ 
 
   public void shuffle() {
     Collections.shuffle(this.deck); 

@@ -22,4 +22,12 @@ public class Card {
     return rank.getValue();
   }
 
+  public String toString() {{
+      return rank.toString() + " of " + suit.toString();
+    }
+  }
+
+  // make a method here that prints out nicely what the card is??
+  // MAY NEED A toString method - specifically called toString
+
 }

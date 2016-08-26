@@ -2,13 +2,14 @@ import static org.junit.Assert.*;
 import org.junit.*;
 import card_game.*;
 
-public class DeckTest {
+public class DeckTest{
 
   Deck deck;
+
   
   @Before 
   public void before(){
-    deck = new Deck();
+  deck = new Deck();
   }
 
   @Test

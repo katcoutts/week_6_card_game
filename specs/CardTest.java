@@ -31,4 +31,10 @@ public class CardTest {
     assertEquals(card.getValue(), 3);
   }
 
+  @Test 
+  public void canGetStringOfCard(){
+    assertEquals("THREE of CLUBS", card.toString());
+  }
+
+
 }
