@@ -6,6 +6,7 @@ public class Hand{
   private ArrayList<Card> hand;
   private Card card;
 
+
   public Hand(){
     this.hand = new ArrayList<Card>();
   }

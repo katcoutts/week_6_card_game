@@ -7,9 +7,9 @@ public class Game{
   private Deck deck;
   private int currentPlayerIndex;
 
-  public Game(ArrayList<Player> players, Deck deck){
+  public Game(){
     this.players = new ArrayList<Player>();
-    this.deck = deck;
+    this.deck = new Deck();
     currentPlayerIndex = 0;
   }
 
@@ -34,21 +34,43 @@ public class Game{
     Player winner = players.get(0);
     for (Player currentPlayer : players){
       int score = currentPlayer.getHand().getHandsValue();
-      if (score > winner.getHand().getHandsValue()){
+      if ((score > winner.getHand().getHandsValue()) && (score <= 21)){
         winner = currentPlayer;
       }
     }
     return winner;
   }
-// SHOULD SOME DEALING STUFF GO IN A DEALER??
+
+
+  public String revealWinner(){
+    return getWinner().getName();
+  }
+
+
   public void dealToPlayers(){
     deck.fullDeck();
+    deck.shuffle();
     for(int i = 0; i < 2; i++){
       for (Player player : players){
       player.getHand().receiveACard(deck.dealACard());
     }
   }
   }
+
+  public String playerTwist(Player player){
+    player.getHand().receiveACard(deck.dealACard());
+    return player.getHand().toString();
+  }
+
+  public String checkIfPlayerOut(Player player){
+    if (player.getHand().getHandsValue() > 21){
+      players.remove(player);
+      return (player.getHand().toString() + "Sorry " + player.getName() + " , you've gone over 21. You're out.\n");
+    }
+    else 
+      return player.getHand().toString();
+  }
+
 
 
   // public void playGame(){

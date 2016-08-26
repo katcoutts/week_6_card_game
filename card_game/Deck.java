@@ -26,11 +26,13 @@ public class Deck {
     return card;
   }
 
- 
+
 
   public void shuffle() {
-    Collections.shuffle(this.deck); 
+    Collections.shuffle(deck); 
   }
+
+
 
 
 }

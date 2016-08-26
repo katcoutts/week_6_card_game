@@ -8,6 +8,7 @@ public class PlayerTest {
   Player player;
   Card card;
   Card card1;
+ 
   
   
   @Before 
@@ -41,6 +42,7 @@ public class PlayerTest {
     player.getHand().receiveACard(card1);
     assertEquals(16, player.getHand().getHandsValue());
   }
+
 
 
 }

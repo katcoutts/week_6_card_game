@@ -8,6 +8,7 @@ public class HandTest {
   Card card;
   Card card2;
   Deck deck;
+  Player player;
   
   
   @Before 
@@ -16,6 +17,7 @@ public class HandTest {
     card = new Card(RankType.THREE, SuitType.CLUBS);
     card2 = new Card(RankType.JACK, SuitType.HEARTS);
     deck = new Deck();
+    player = new Player("Katrina");
   }
 
   @Test
@@ -51,5 +53,6 @@ public class HandTest {
     int value = hand.getHandsValue();
     assertEquals(13, value);
   }
+
 
 }

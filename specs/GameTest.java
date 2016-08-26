@@ -25,7 +25,7 @@ public class GameTest{
     player2 = new Player("Charley");
     player3 = new Player("Hannah");
     deck = new Deck();
-    game = new Game (players, deck);
+    game = new Game ();
     card = new Card(RankType.SIX, SuitType.CLUBS);
     card1 = new Card(RankType.KING, SuitType.CLUBS);
     card2 = new Card(RankType.NINE, SuitType.CLUBS);
@@ -80,6 +80,32 @@ public class GameTest{
   }
 
   @Test
+  public void canRevealWinner(){
+    game.addAPlayer(player);
+    game.addAPlayer(player2);
+    game.addAPlayer(player3);
+    player.getHand().receiveACard(card);
+    player.getHand().receiveACard(card1);
+    player2.getHand().receiveACard(card2);
+    player2.getHand().receiveACard(card3);
+    player3.getHand().receiveACard(card4);
+    player3.getHand().receiveACard(card5);
+    assertEquals("Hannah", game.revealWinner());
+  }
+
+  @Test
+  public void cantWinIfOver21(){
+    game.addAPlayer(player);
+    game.addAPlayer(player2);
+    player.getHand().receiveACard(card);
+    player.getHand().receiveACard(card1);
+    player2.getHand().receiveACard(card2);
+    player2.getHand().receiveACard(card3);
+    player2.getHand().receiveACard(card4);
+    assertEquals("Katrina", game.revealWinner());
+  }
+
+  @Test
   public void canGetTwoCards(){
     game.addAPlayer(player);
     game.addAPlayer(player2);
@@ -87,7 +113,24 @@ public class GameTest{
     assertEquals(2, player.getHand().getCount());
   }
 
+  @Test
+  public void playerCanTwist(){
+    game.addAPlayer(player);
+    game.addAPlayer(player2);
+    game.dealToPlayers();
+    game.playerTwist(player);
+    assertEquals(3, player.getHand().getCount());
+  }
 
+  @Test
+  public void canTellPlayerIfTheyreOver21(){
+    game.addAPlayer(player);
+    player.getHand().receiveACard(card);
+    player.getHand().receiveACard(card1);
+    player.getHand().receiveACard(card2);
+    String value = game.checkIfPlayerOut(player);
+    assertEquals("Sorry, you've gone over 21. You're out.", value);
+  }
 
 
 }
