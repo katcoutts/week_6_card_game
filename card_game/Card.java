@@ -31,7 +31,6 @@ public class Card {
     }
   }
 
-  // make a method here that prints out nicely what the card is??
-  // MAY NEED A toString method - specifically called toString
+
 
 }

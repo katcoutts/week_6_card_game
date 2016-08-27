@@ -15,8 +15,6 @@ public class Hand{
     hand.add(card);
   }
 
-  // FOR THE TAKE CARD METHOD YOU MAY PASS IN THE DECK OR ANOTHER CARD STACK AND DO A DEALCARD METHOD ON THAT TO GET THE CARD THAT YOU'RE PASSING IN.
-
   public int getCount(){
     return hand.size();
   }
@@ -31,6 +29,22 @@ public class Hand{
 
  public int alterHandScoreForRanks(){
   int score = getHandsValue();   
+  for (Card card : hand){
+    if (card.getRank() == RankType.JACK){
+      score ++; 
+    }  
+    if (card.getRank() == RankType.QUEEN){
+      score += 2;
+    }
+    if (card.getRank() == RankType.KING){
+      score +=3;
+    }
+  }
+  return score;
+ }
+
+ public int alterHighHandScoreForRanks(){
+  int score = getHandsHighValue();   
   for (Card card : hand){
     if (card.getRank() == RankType.JACK){
       score ++; 
@@ -61,6 +75,12 @@ public class Hand{
     return counter;
   }
 
-
+  public boolean checkForAnAce(){
+    for (Card card : hand){
+      if (card.getLowValue() == 1)
+        return true;
+    }
+    return false;
+  }
 
 }

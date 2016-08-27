@@ -21,6 +21,8 @@ public class GameTest{
   Card card7;
   Card card8;
   Card card9;
+  Card card10;
+  Card card11;
 
   @Before
   public void before(){
@@ -40,6 +42,8 @@ public class GameTest{
     card7 = new Card(RankType.ACE, SuitType.HEARTS);
     card8 = new Card(RankType.ACE, SuitType.SPADES);
     card9 = new Card(RankType.KING, SuitType.SPADES);
+    card10 = new Card(RankType.TEN, SuitType.SPADES);
+    card11 = new Card(RankType.FOUR, SuitType.SPADES);
   }
 
   @Test
@@ -101,6 +105,42 @@ public class GameTest{
     // player3.getHand().receiveACard(card4);
     // player3.getHand().receiveACard(card5);
     assertEquals("Katrina", game.revealWinner());
+  }
+
+  @Test
+  public void canTreatAceAs11IfGetsHigherScore(){
+    game.addAPlayer(player);
+    game.addAPlayer(player2);
+    player.getHand().receiveACard(card8);
+    player.getHand().receiveACard(card9);
+    player2.getHand().receiveACard(card3);
+    player2.getHand().receiveACard(card6);
+    assertEquals("Katrina", game.revealWinner());
+  }  
+
+  @Test
+  public void advancedWinnerCanTreatAceAs11(){
+    game.addAPlayer(player);
+    game.addAPlayer(player2);
+    player.getHand().receiveACard(card8);
+    player.getHand().receiveACard(card9);
+    player2.getHand().receiveACard(card7);
+    player2.getHand().receiveACard(card10);
+    assertEquals("Katrina", game.getAdvancedWinner().getName());
+  }
+
+  @Test
+  public void testIfFiveCardsTrumpsLess(){
+    game.addAPlayer(player);
+    game.addAPlayer(player2);
+    player.getHand().receiveACard(card9);
+    player.getHand().receiveACard(card10);
+    player2.getHand().receiveACard(card6);
+    player2.getHand().receiveACard(card7);
+    player2.getHand().receiveACard(card8);
+    player2.getHand().receiveACard(card);
+    player2.getHand().receiveACard(card11);
+    assertEquals("Charley", game.getAdvancedWinner().getName());
   }
 
   @Test

@@ -7,6 +7,7 @@ public class HandTest {
   Hand hand;
   Card card;
   Card card2;
+  Card card3;
   Deck deck;
   Player player;
   
@@ -16,6 +17,7 @@ public class HandTest {
     hand = new Hand();
     card = new Card(RankType.THREE, SuitType.CLUBS);
     card2 = new Card(RankType.JACK, SuitType.HEARTS);
+    card3 = new Card(RankType.ACE, SuitType.HEARTS);
     deck = new Deck();
     player = new Player("Katrina");
   }
@@ -54,6 +56,20 @@ public class HandTest {
     assertEquals(13, value);
     int score = hand.alterHandScoreForRanks();
     assertEquals(14, score);
+  }
+
+  @Test
+  public void canReturnTrueIfFindsAnAce(){
+    hand.receiveACard(card2);
+    hand.receiveACard(card3);
+    assertEquals(true, hand.checkForAnAce());
+  } 
+
+  @Test
+  public void canReturnFalseIfFindsAnAce(){
+    hand.receiveACard(card2);
+    hand.receiveACard(card);
+    assertEquals(false, hand.checkForAnAce());
   }
 
 
