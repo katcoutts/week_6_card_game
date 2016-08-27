@@ -30,15 +30,66 @@ public class Game{
     return currentPlayerIndex;
   }
 
+  // public Player getWinner(){
+  //   Player winner = players.get(0);
+  //   for (Player currentPlayer : players){
+  //     int score = currentPlayer.getHand().getHandsValue();
+  //     if ((score > winner.getHand().getHandsValue()) && (score <= 21)){
+  //       winner = currentPlayer;
+  //     }
+  //   }
+  //   return winner;
+  // }
+
   public Player getWinner(){
-    Player winner = players.get(0);
-    for (Player currentPlayer : players){
-      int score = currentPlayer.getHand().getHandsValue();
-      if ((score > winner.getHand().getHandsValue()) && (score <= 21)){
-        winner = currentPlayer;
-      }
+    Player winner = null;
+    int playerNumber = players.size();
+    if (playerNumber == 1){
+      winner = players.get(0);
     }
+    else if (playerNumber == 2){
+    int player1Score = players.get(0).getHand().getHandsValue();
+    int player2Score = players.get(1).getHand().getHandsValue();
+    if (player1Score < player2Score){
+      winner = players.get(1);
+    }
+    else if (player1Score > player2Score){
+      winner = players.get(0);
+    }   
+  }
     return winner;
+  }
+
+  public Player getAdvancedWinner(){
+    Player newWinner = null;
+    int player1NewScore = players.get(0).getHand().alterHandScoreForRanks();
+    int player2NewScore = players.get(1).getHand().alterHandScoreForRanks();
+    if (player1NewScore < player2NewScore){
+      newWinner = players.get(1);
+    }
+    if (player1NewScore > player2NewScore){
+      newWinner = players.get(0);
+    }
+    if (player1NewScore == player2NewScore){
+      newWinner = null;
+    } 
+    return newWinner;  
+  }
+// BELOW IS USED IF THERE'S NO ADVANCED WINNER AS THAT MEANS THEY'VE GOT SAME SCORE SO LOOK AT NUMBER OF CARDS
+  public Player getWinnerByHandsLength(){
+    Player gameWinner = null;
+    int player1Cards = players.get(0).getHand().getCount();
+    int player2Cards = players.get(1).getHand().getCount();
+    if (player1Cards < player2Cards){
+      gameWinner = players.get(1);
+    }
+    if (player1Cards > player2Cards){
+      gameWinner = players.get(0);
+    }
+    if (player1Cards == player2Cards){
+      gameWinner = null;
+    } 
+    return gameWinner; 
   }
 
 
@@ -73,9 +124,6 @@ public class Game{
 
 
 
-  // public void playGame(){
-
-  // }
 
 
 

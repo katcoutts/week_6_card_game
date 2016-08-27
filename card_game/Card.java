@@ -18,8 +18,12 @@ public class Card {
     return rank;
   }
 
-  public int getValue() {
-    return rank.getValue();
+  public int getLowValue() {
+    return rank.getLowValue();
+  } 
+
+  public int getHighValue() {
+    return rank.getHighValue();
   }
 
   public String toString() {{

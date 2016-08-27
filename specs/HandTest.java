@@ -52,7 +52,11 @@ public class HandTest {
     hand.receiveACard(card2);
     int value = hand.getHandsValue();
     assertEquals(13, value);
+    int score = hand.alterHandScoreForRanks();
+    assertEquals(14, score);
   }
+
+
 
 
 }
