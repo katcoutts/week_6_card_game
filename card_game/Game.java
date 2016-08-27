@@ -146,10 +146,10 @@ public class Game{
     else {
       player2NewScore = players.get(1).getHand().alterHandScoreForRanks();
     }
-    if ((players.get(0).getHand().getCount() > players.get(1).getHand().getCount()) && (players.get(0).getHand().getCount() == 5)){
+    if ((players.get(0).getHand().getCount() > players.get(1).getHand().getCount()) && (players.get(0).getHand().getCount() >= 5)){
       newWinner = players.get(0);   
     }
-    else if ((players.get(1).getHand().getCount() > players.get(0).getHand().getCount()) && (players.get(1).getHand().getCount() == 5)){
+    else if ((players.get(1).getHand().getCount() > players.get(0).getHand().getCount()) && (players.get(1).getHand().getCount() >= 5)){
       newWinner = players.get(1);
     }
     else if (player1NewScore < player2NewScore){
