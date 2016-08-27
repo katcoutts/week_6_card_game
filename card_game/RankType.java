@@ -16,16 +16,6 @@ public enum RankType {
   QUEEN(10, 10),
   KING(10, 10);
 
-  // int value;
-
-  // RankType(int value) {
-  //     this.value = value;
-  // }
-
-  // public int getValue() {
-  //     return value;
-  // }
-
 
   int low;
   int high;
@@ -35,13 +25,13 @@ public enum RankType {
    this.high = high;
  }
 
-  public int getLowValue() {
+ public int getLowValue() {
    return this.low;
-  }
+ }
 
-  public int getHighValue() {
-    return this.high;
-  }
+ public int getHighValue() {
+  return this.high;
+}
 
 
 

@@ -31,7 +31,7 @@ public class GameTest{
     player2 = new Player("Charley");
     player3 = new Player("Hannah");
     deck = new Deck();
-    game = new Game ();
+    game = new Game (deck);
     card = new Card(RankType.SIX, SuitType.CLUBS);
     card1 = new Card(RankType.KING, SuitType.CLUBS);
     card2 = new Card(RankType.NINE, SuitType.CLUBS);

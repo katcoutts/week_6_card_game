@@ -7,7 +7,7 @@ public class Game{
   private Deck deck;
   private int currentPlayerIndex;
 
-  public Game(){
+  public Game(Deck deck){
     this.players = new ArrayList<Player>();
     this.deck = new Deck();
     currentPlayerIndex = 0;
@@ -21,14 +21,18 @@ public class Game{
     players.add(player);
   }
 
+  public Deck getDeck(){
+    return this.deck;
+  }
+
   public void dealToPlayers(){
     deck.fullDeck();
     deck.shuffle();
     for(int i = 0; i < 2; i++){
       for (Player player : players){
-      player.getHand().receiveACard(deck.dealACard());
+        player.getHand().receiveACard(deck.dealACard());
+      }
     }
-  }
   }
 
   public String playerTwist(Player player){
@@ -188,7 +192,7 @@ public class Game{
   }
 
 
- 
+
 
   public String checkIfPlayerOut(Player player){
     if (player.getHand().getHandsValue() > 21){

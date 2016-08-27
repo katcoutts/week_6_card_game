@@ -6,7 +6,7 @@ public class Runner {
 
     ArrayList<Player> players = new ArrayList<Player>();
     Deck deck = new Deck();
-    Game game = new Game();
+    Game game = new Game(deck);
     Scanner input = new Scanner(System.in);
 
     System.out.println("Please enter first player's name : ");
@@ -19,51 +19,85 @@ public class Runner {
     game.addAPlayer(player1);
     game.addAPlayer(player2);
     game.dealToPlayers();
-    // System.out.println(game.playerCount());
 
-    
-    // WHY IS THIS FOR LOOP NOT WORKING????
-    // String answer;
+// NEED TO WORK OUT WHY LOOPING THROUGH THIS ISN'T WORKING
     // for (Player player : players){
-    //   System.out.println(player.getName());
-    // }
-
-    // boolean good = false; 
-    // do    
-    //   {
-    //     System.out.println(player.getName() + " would you like to twist or stick (t/s) : ");
-    //     String answer = input.next();
-    //     if(answer.equals("t")){
-    //       good = true;
-    //       game.playerTwist(player);
-    //       System.out.println(game.checkIfPlayerOut(player));
+    //     System.out.println("\n" + player.getName() + " your hand is:");
+    //     System.out.println(player.getHand().toString()); 
+    //     Boolean burn = false;
+    //     String burnChoice;
+    //     if (player.getHand().burnableHand() == true){
+    //       do {
+    //         System.out.println("\n" + player.getName() + " do you want to burn this hand? (y/n)");
+    //         burnChoice = input.next();
+    //         if (burnChoice.equals("y")){
+    //           burn = true;
+    //           player.getHand().burnHand();
+    //           game.playerTwist(player);
+    //           System.out.println("\n" + player.getName() + " your new hand is:");
+    //           System.out.println(game.playerTwist(player));
+    //         }
+    //         else if (burnChoice != "y"){
+    //           burn = false;
+    //         }
+    //       }
+    //       while ((player.getHand().burnableHand() == true) && (burn));
     //     }
-    //     else{
-    //       good = false;
-    //     System.out.println(game.checkIfPlayerOut(player));
-          // }
+
+    //     String answer;
+    //     boolean good = false;
+    //     do
+    //     {
+    //       System.out.println(player.getName() + " would you like to twist or stick (t/s) : ");
+    //       answer = input.next();
+    //       if(answer.equals("t")){
+    //         good = true;
+    //         game.playerTwist(player1);
+    //         System.out.println(game.checkIfPlayerOut(player1));
+    //       }
+    //       else if((answer != "t") && (player.getHand().getHandsHighValue() < 15)){
+    //         good = true;
+    //         System.out.println("Sorry, you need at least 15 to be able to win so you're twisting");
+    //         game.playerTwist(player);
+    //         System.out.println(game.checkIfPlayerOut(player));
+    //       }
+    //       else{
+    //         good = false;
+    //         System.out.println(game.checkIfPlayerOut(player));
+    //       }
+    //     }
+    //     while ((good) && (player.getHand().getHandsValue() < 21));
     //   }
-    //   while (good && player.getHand().getHandsValue() < 21);
-    // }
+
+
 
 
 // BELOW IS ALL GOOD BUT AS NOT LOOPING THROUGH ALL PLAYERS ITS LIMITED TO TWO PLAYERS
+
     System.out.println("\n" + player1.getName() + " your hand is:");
     System.out.println(player1.getHand().toString()); 
-    String burn;
+    Boolean burn = false;
+    String burnChoice;
     if (player1.getHand().burnableHand() == true){
-      System.out.println("\n" + player1.getName() + " do you want to burn this hand? (y/n)");
-      burn = input.next();
-      if (burn.equals("y")){
-        player1.getHand().burnHand();
-        game.playerTwist(player1);
-        System.out.println("\n" + player1.getName() + " your new hand is:");
-        System.out.println(game.playerTwist(player1));
+      do {
+        System.out.println("\n" + player1.getName() + " do you want to burn this hand? (y/n)");
+        burnChoice = input.next();
+        if (burnChoice.equals("y")){
+          burn = true;
+          player1.getHand().burnHand();
+          game.playerTwist(player1);
+          System.out.println("\n" + player1.getName() + " your new hand is:");
+          System.out.println(game.playerTwist(player1));
+        }
+        else if (burnChoice != "y"){
+          burn = false;
+        }
       }
+      while ((player1.getHand().burnableHand() == true) && (burn));
     }
 
 
-// THIS SECTION GETS PLAYER ONES CHOICES AND FINAL HAND
+// // THIS SECTION GETS PLAYER ONES CHOICES AND FINAL HAND
     String answer;
     boolean good = false;
     do
@@ -90,22 +124,31 @@ public class Runner {
     while ((good) && (player1.getHand().getHandsValue() < 21));
 
 
-    
-    System.out.println(player2.getName() + " your hand is:");
-    System.out.println(player2.getHand().toString());
-    String burn2;
+// THIS SECTION GIVES PLAYER 2 THEIR CARDS AND LETS THEM BURN IF 13.
+    System.out.println("\n" + player2.getName() + " your hand is:");
+    System.out.println(player2.getHand().toString()); 
+    Boolean burn2 = false;
+    String burnChoice2;
     if (player2.getHand().burnableHand() == true){
-      System.out.println("\n" + player2.getName() + " do you want to burn this hand? (y/n)");
-      burn2 = input.next();
-      if (burn2.equals("y")){
-        player2.getHand().burnHand();
-        game.playerTwist(player2);
-        System.out.println("\n" + player2.getName() + " your new hand is:");
-        System.out.println(game.playerTwist(player2));
+      do {
+        System.out.println("\n" + player2.getName() + " do you want to burn this hand? (y/n)");
+        burnChoice2 = input.next();
+        if (burnChoice2.equals("y")){
+          burn2 = true;
+          player2.getHand().burnHand();
+          game.playerTwist(player2);
+          System.out.println("\n" + player2.getName() + " your new hand is:");
+          System.out.println(game.playerTwist(player2));
+        }
+        else if (burnChoice2 != "y"){
+          burn = false;
+        }
       }
+      while ((player2.getHand().burnableHand() == true) && (burn));
     }
 
-// THIS SECTION ALLOWS PLAYER TWO TO TWIST OR STICK AND GET A FINAL HAND
+
+// // THIS SECTION ALLOWS PLAYER TWO TO TWIST OR STICK AND GET A FINAL HAND
     String answer2;
     boolean good2 = false;
     do
@@ -131,51 +174,8 @@ public class Runner {
     }
     while ((good2) && (player2.getHand().getHandsValue() < 21));
 
-    // THIS SECTION CHECKS IF ANYONE HAS AN ACE AND ADJUSTS SCORES DEPENDING ON WHETHER PLAYER WANTS TO PLAY ACES HIGH OR ACES LOW
-    // String ace;
-    // ace = "g";
-    // String ace2;
-    // ace2 = "j";
-    // int player2FinalScore;
-    // int player1FinalScore;
-    // player2FinalScore = player2.getHand().getHandsValue();
-    // player1FinalScore = player1.getHand().getHandsValue();
-    // if((player1.getHand().checkForAnAce() == true) && (player1.getHand().getHandsValue() < 21)){
-    //     System.out.println(player1.getName() + " , do you want your Ace to be high or low? h/l");
-    //     ace = input.next();
-    //     if (ace == "h"){
-    //       player1FinalScore = player1.getHand().getHandsHighValue();
-    //     }
-    //     System.out.println(player1FinalScore);
-    //   }
-    
-    //   if ((player2.getHand().checkForAnAce() == true) && (player2.getHand().getHandsValue() < 21)){
-    //     System.out.println(player2.getName() + " , do you want your Ace to be high or low? h/l");
-    //     ace2 = input.next();
-    //     if (ace == "h"){
-    //       player2FinalScore = player2.getHand().getHandsHighValue();
-    //     }
-    //     System.out.println(player2FinalScore);
-    //   }
+ // HERE WE WORK OUT THE WINNER
 
-
-      // if ((ace == "h") || (ace2 == "h")){
-      
-      //   if (player1FinalScore > player2FinalScore){
-      //     System.out.println(player1.getName() + " wins");
-      //    }
-
-      //   else if (player2FinalScore > player1FinalScore){
-      //     System.out.println(player2.getName() + " wins");
-      //     }
-        
-      // }
-
-
-
-    // THIS SECTION SORTS OUT A WINNER IF NOBODY HAS AN ACE
-
-    // if ((player1.getHand().checkForAnAce() == false) && (player2.getHand().checkForAnAce() == false)){
     if (game.playerCount() == 0){
       System.out.println("You've both blown it!");
     }

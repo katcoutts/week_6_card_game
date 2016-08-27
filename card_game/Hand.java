@@ -27,37 +27,37 @@ public class Hand{
     return string;
   }
 
- public int alterHandScoreForRanks(){
-  int score = getHandsValue();   
-  for (Card card : hand){
-    if (card.getRank() == RankType.JACK){
-      score ++; 
-    }  
-    if (card.getRank() == RankType.QUEEN){
-      score += 2;
+  public int alterHandScoreForRanks(){
+    int score = getHandsValue();   
+    for (Card card : hand){
+      if (card.getRank() == RankType.JACK){
+        score ++; 
+      }  
+      if (card.getRank() == RankType.QUEEN){
+        score += 2;
+      }
+      if (card.getRank() == RankType.KING){
+        score +=3;
+      }
     }
-    if (card.getRank() == RankType.KING){
-      score +=3;
-    }
+    return score;
   }
-  return score;
- }
 
- public int alterHighHandScoreForRanks(){
-  int score = getHandsHighValue();   
-  for (Card card : hand){
-    if (card.getRank() == RankType.JACK){
-      score ++; 
-    }  
-    if (card.getRank() == RankType.QUEEN){
-      score += 2;
+  public int alterHighHandScoreForRanks(){
+    int score = getHandsHighValue();   
+    for (Card card : hand){
+      if (card.getRank() == RankType.JACK){
+        score ++; 
+      }  
+      if (card.getRank() == RankType.QUEEN){
+        score += 2;
+      }
+      if (card.getRank() == RankType.KING){
+        score +=3;
+      }
     }
-    if (card.getRank() == RankType.KING){
-      score +=3;
-    }
+    return score;
   }
-  return score;
- }
 
   public int getHandsValue(){
     int counter = 0;
