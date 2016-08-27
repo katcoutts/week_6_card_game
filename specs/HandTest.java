@@ -8,6 +8,7 @@ public class HandTest {
   Card card;
   Card card2;
   Card card3;
+  Card card4;
   Deck deck;
   Player player;
   
@@ -16,6 +17,7 @@ public class HandTest {
   public void before(){
     hand = new Hand();
     card = new Card(RankType.THREE, SuitType.CLUBS);
+    card4 = new Card(RankType.THREE, SuitType.HEARTS);
     card2 = new Card(RankType.JACK, SuitType.HEARTS);
     card3 = new Card(RankType.ACE, SuitType.HEARTS);
     deck = new Deck();
@@ -70,6 +72,21 @@ public class HandTest {
     hand.receiveACard(card2);
     hand.receiveACard(card);
     assertEquals(false, hand.checkForAnAce());
+  }
+
+  @Test
+  public void canBurnHand(){
+    hand.receiveACard(card2);
+    hand.receiveACard(card);
+    hand.burnHand();
+    assertEquals(0, hand.getCount());
+  }
+
+  @Test 
+  public void canSpotBurnableHand(){
+    hand.receiveACard(card4);
+    hand.receiveACard(card2);
+    assertEquals(true, hand.burnableHand());
   }
 
 

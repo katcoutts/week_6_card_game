@@ -50,6 +50,17 @@ public class Runner {
 // BELOW IS ALL GOOD BUT AS NOT LOOPING THROUGH ALL PLAYERS ITS LIMITED TO TWO PLAYERS
     System.out.println("\n" + player1.getName() + " your hand is:");
     System.out.println(player1.getHand().toString()); 
+    String burn;
+    if (player1.getHand().burnableHand() == true){
+      System.out.println("\n" + player1.getName() + " do you want to burn this hand? (y/n)");
+      burn = input.next();
+      if (burn.equals("y")){
+        player1.getHand().burnHand();
+        game.playerTwist(player1);
+        System.out.println("\n" + player1.getName() + " your new hand is:");
+        System.out.println(game.playerTwist(player1));
+      }
+    }
 
 
 // THIS SECTION GETS PLAYER ONES CHOICES AND FINAL HAND
@@ -82,6 +93,18 @@ public class Runner {
     
     System.out.println(player2.getName() + " your hand is:");
     System.out.println(player2.getHand().toString());
+    String burn2;
+    if (player2.getHand().burnableHand() == true){
+      System.out.println("\n" + player2.getName() + " do you want to burn this hand? (y/n)");
+      burn2 = input.next();
+      if (burn2.equals("y")){
+        player2.getHand().burnHand();
+        game.playerTwist(player2);
+        System.out.println("\n" + player2.getName() + " your new hand is:");
+        System.out.println(game.playerTwist(player2));
+      }
+    }
+
 // THIS SECTION ALLOWS PLAYER TWO TO TWIST OR STICK AND GET A FINAL HAND
     String answer2;
     boolean good2 = false;

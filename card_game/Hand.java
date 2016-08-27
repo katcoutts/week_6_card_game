@@ -83,4 +83,15 @@ public class Hand{
     return false;
   }
 
+  public void burnHand(){
+    hand.clear();
+  }
+
+  public boolean burnableHand(){
+    if (getHandsValue() == 13){
+      return true;
+    }
+    return false;
+  }
+
 }
