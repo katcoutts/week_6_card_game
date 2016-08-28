@@ -21,52 +21,52 @@ public class Runner {
     game.dealToPlayers();
 
 // NEED TO WORK OUT WHY LOOPING THROUGH THIS ISN'T WORKING
-    // for (Player player : players){
-    //     System.out.println("\n" + player.getName() + " your hand is:");
-    //     System.out.println(player.getHand().toString()); 
+    // for (Player currentPlayer : players){
+    //     System.out.println("\n" + currentPlayer.getName() + " your hand is:");
+    //     System.out.println(currentPlayer.getHand().toString()); 
     //     Boolean burn = false;
     //     String burnChoice;
-    //     if (player.getHand().burnableHand() == true){
+    //     if (currentPlayer.getHand().burnableHand() == true){
     //       do {
-    //         System.out.println("\n" + player.getName() + " do you want to burn this hand? (y/n)");
+    //         System.out.println("\n" + currentPlayer.getName() + " do you want to burn this hand? (y/n)");
     //         burnChoice = input.next();
     //         if (burnChoice.equals("y")){
     //           burn = true;
-    //           player.getHand().burnHand();
-    //           game.playerTwist(player);
-    //           System.out.println("\n" + player.getName() + " your new hand is:");
-    //           System.out.println(game.playerTwist(player));
+    //           currentPlayer.getHand().burnHand();
+    //           game.playerTwist(currentPlayer);
+    //           System.out.println("\n" + currentPlayer.getName() + " your new hand is:");
+    //           System.out.println(game.playerTwist(currentPlayer));
     //         }
     //         else if (burnChoice != "y"){
     //           burn = false;
     //         }
     //       }
-    //       while ((player.getHand().burnableHand() == true) && (burn));
+    //       while ((currentPlayer.getHand().burnableHand() == true) && (burn));
     //     }
 
     //     String answer;
     //     boolean good = false;
     //     do
     //     {
-    //       System.out.println(player.getName() + " would you like to twist or stick (t/s) : ");
+    //       System.out.println(currentPlayer.getName() + " would you like to twist or stick (t/s) : ");
     //       answer = input.next();
     //       if(answer.equals("t")){
     //         good = true;
-    //         game.playerTwist(player1);
-    //         System.out.println(game.checkIfPlayerOut(player1));
+    //         game.playerTwist(currentPlayer);
+    //         System.out.println(game.checkIfPlayerOut(currentPlayer));
     //       }
-    //       else if((answer != "t") && (player.getHand().getHandsHighValue() < 15)){
+    //       else if((answer != "t") && (currentPlayer.getHand().getHandsHighValue() < 15)){
     //         good = true;
     //         System.out.println("Sorry, you need at least 15 to be able to win so you're twisting");
-    //         game.playerTwist(player);
-    //         System.out.println(game.checkIfPlayerOut(player));
+    //         game.playerTwist(currentPlayer);
+    //         System.out.println(game.checkIfPlayerOut(currentPlayer));
     //       }
     //       else{
     //         good = false;
-    //         System.out.println(game.checkIfPlayerOut(player));
+    //         System.out.println(game.checkIfPlayerOut(currentPlayer));
     //       }
     //     }
-    //     while ((good) && (player.getHand().getHandsValue() < 21));
+    //     while ((good) && (currentPlayer.getHand().getHandsValue() < 21));
     //   }
 
 
@@ -198,7 +198,6 @@ public class Runner {
       System.out.println("It's a draw!");
     }
     
-    // }
 
 
 

@@ -9,6 +9,7 @@ public class HandTest {
   Card card2;
   Card card3;
   Card card4;
+  Card card5;
   Deck deck;
   Player player;
   
@@ -20,6 +21,7 @@ public class HandTest {
     card4 = new Card(RankType.THREE, SuitType.HEARTS);
     card2 = new Card(RankType.JACK, SuitType.HEARTS);
     card3 = new Card(RankType.ACE, SuitType.HEARTS);
+    card5 = new Card(RankType.ACE, SuitType.CLUBS);
     deck = new Deck();
     player = new Player("Katrina");
   }
@@ -50,13 +52,14 @@ public class HandTest {
     assertEquals("THREE of CLUBS\nJACK of HEARTS\n", hand.toString());
   }
 
+
   @Test
   public void canGetAHandsValue(){
     hand.receiveACard(card);
     hand.receiveACard(card2);
     int value = hand.getHandsValue();
     assertEquals(13, value);
-    int score = hand.alterHandScoreForRanks();
+    int score = hand.handValueAdjustForRank();
     assertEquals(14, score);
   }
 
@@ -87,6 +90,28 @@ public class HandTest {
     hand.receiveACard(card4);
     hand.receiveACard(card2);
     assertEquals(true, hand.burnableHand());
+  }
+
+  @Test
+  public void canFindHandsBestScore(){
+    hand.receiveACard(card2);
+    hand.receiveACard(card3);
+    assertEquals(21, hand.findBestScore());
+  }
+
+  @Test
+  public void canGetAdvancedScore(){
+    hand.receiveACard(card2);
+    hand.receiveACard(card3);
+    assertEquals(22, hand.handValueAdjustForRank());
+  }
+
+  @Test
+  public void canTreatOneAceHighOneAceLow(){
+    hand.receiveACard(card3);
+    hand.receiveACard(card4);
+    hand.receiveACard(card5);
+    assertEquals(15, hand.findBestScore());
   }
 
 

@@ -60,8 +60,8 @@ public class GameTest{
 
   @Test
   public void canGiveCurrentPlayer(){
-  game.addAPlayer(player);
-  assertEquals("Katrina", game.giveCurrentPlayer().getName());
+    game.addAPlayer(player);
+    assertEquals("Katrina", game.giveCurrentPlayer().getName());
   }
 
   @Test
@@ -129,19 +129,6 @@ public class GameTest{
     assertEquals("Katrina", game.getAdvancedWinner().getName());
   }
 
-  @Test
-  public void testIfFiveCardsTrumpsLess(){
-    game.addAPlayer(player);
-    game.addAPlayer(player2);
-    player.getHand().receiveACard(card9);
-    player.getHand().receiveACard(card10);
-    player2.getHand().receiveACard(card6);
-    player2.getHand().receiveACard(card7);
-    player2.getHand().receiveACard(card8);
-    player2.getHand().receiveACard(card);
-    player2.getHand().receiveACard(card11);
-    assertEquals("Charley", game.getAdvancedWinner().getName());
-  }
 
   @Test
   public void returnsNullIfNoBasicWinner(){
@@ -152,7 +139,7 @@ public class GameTest{
     player2.getHand().receiveACard(card5);
     player2.getHand().receiveACard(card6);
     assertEquals(null, game.getWinner());
-   }
+  }
 
   @Test
   public void canGetAdvancedWinner(){
@@ -163,10 +150,10 @@ public class GameTest{
     player2.getHand().receiveACard(card5);
     player2.getHand().receiveACard(card6);
     assertEquals("Katrina", game.getAdvancedWinner().getName());
-   }
+  }
 
-   @Test
-   public void canSeparateEqualScoresBasedOnHandLength(){
+  @Test
+  public void canSeparateEqualScoresBasedOnHandLength(){
     game.addAPlayer(player);
     game.addAPlayer(player2);
     player.getHand().receiveACard(card);
@@ -176,20 +163,20 @@ public class GameTest{
     player2.getHand().receiveACard(card6);
     player2.getHand().receiveACard(card9);
     assertEquals("Katrina", game.getWinnerByHandsLength().getName());
-   }
+  }
 
 
-  // @Test
-  // public void cantWinIfOver21(){
-  //   game.addAPlayer(player);
-  //   game.addAPlayer(player2);
-  //   player.getHand().receiveACard(card);
-  //   player.getHand().receiveACard(card1);
-  //   player2.getHand().receiveACard(card2);
-  //   player2.getHand().receiveACard(card3);
-  //   player2.getHand().receiveACard(card4);
-  //   assertEquals("Katrina", game.revealWinner());
-  // }
+  @Test
+  public void cantWinIfOver21(){
+    game.addAPlayer(player);
+    game.addAPlayer(player2);
+    player.getHand().receiveACard(card);
+    player.getHand().receiveACard(card1);
+    player2.getHand().receiveACard(card2);
+    player2.getHand().receiveACard(card3);
+    player2.getHand().receiveACard(card4);
+    assertEquals("Katrina", game.revealWinner());
+  }
 
   @Test
   public void canGetTwoCards(){

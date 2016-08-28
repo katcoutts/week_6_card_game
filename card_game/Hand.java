@@ -27,37 +27,6 @@ public class Hand{
     return string;
   }
 
-  public int alterHandScoreForRanks(){
-    int score = getHandsValue();   
-    for (Card card : hand){
-      if (card.getRank() == RankType.JACK){
-        score ++; 
-      }  
-      if (card.getRank() == RankType.QUEEN){
-        score += 2;
-      }
-      if (card.getRank() == RankType.KING){
-        score +=3;
-      }
-    }
-    return score;
-  }
-
-  public int alterHighHandScoreForRanks(){
-    int score = getHandsHighValue();   
-    for (Card card : hand){
-      if (card.getRank() == RankType.JACK){
-        score ++; 
-      }  
-      if (card.getRank() == RankType.QUEEN){
-        score += 2;
-      }
-      if (card.getRank() == RankType.KING){
-        score +=3;
-      }
-    }
-    return score;
-  }
 
   public int getHandsValue(){
     int counter = 0;
@@ -93,5 +62,48 @@ public class Hand{
     }
     return false;
   }
+
+  public int findBestScore(){
+    int playerBestScore = 0;
+    if ((getHandsHighValue() > getHandsValue()) && (getHandsHighValue() <= 21)){
+      playerBestScore = getHandsHighValue();
+    }
+    else if (((getHandsHighValue() - 10) > getHandsValue()) && ((getHandsHighValue() - 10) <= 21)){
+      playerBestScore = (getHandsHighValue() - 10);
+    }
+    else if (((getHandsHighValue() - 20) > getHandsValue()) && ((getHandsHighValue() - 20) <= 21)){
+      playerBestScore = (getHandsHighValue() - 20);
+    }
+    else if (getHandsValue() <= 21){
+      playerBestScore = getHandsValue();
+    }
+    else {
+      playerBestScore = 0;
+    }
+    return playerBestScore;
+  }
+
+  public int handValueAdjustForRank(){
+    int score = findBestScore();
+    for (Card card : hand){
+      if (card.getRank() == RankType.JACK){
+        score ++; 
+      }  
+      if (card.getRank() == RankType.QUEEN){
+        score += 2;
+      }
+      if (card.getRank() == RankType.KING){
+        score +=3;
+      }
+    }
+    return score;
+  }
+
+
+
+
+
+
+
 
 }
