@@ -144,7 +144,7 @@ public class Runner {
           burn = false;
         }
       }
-      while ((player2.getHand().burnableHand() == true) && (burn));
+      while ((player2.getHand().burnableHand() == true) && (burn2));
     }
 
 
